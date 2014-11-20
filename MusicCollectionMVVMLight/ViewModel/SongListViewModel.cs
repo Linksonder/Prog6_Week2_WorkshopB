@@ -13,6 +13,12 @@ namespace MusicCollectionMVVMLight.ViewModel
     {
         ISongRepository songRepository;
 
+        public ObservableCollection<SongViewModel> Songs { get; set; }
+
+        public SongViewModel SongViewModel { get; set; }
+
+        public ICommand AddSong { get; set; }
+
         public SongListViewModel()
         {
             songRepository = new DummySongRepository();
@@ -20,34 +26,30 @@ namespace MusicCollectionMVVMLight.ViewModel
 
 
             AddSong = new RelayCommand(AddNewSong, CanAddNewSong);
-            Song = new SongViewModel();
+            SongViewModel = new SongViewModel();
             Songs = new ObservableCollection<SongViewModel>(songList);
         }
 
         private void AddNewSong()
         {
-            Songs.Add(Song);
+            Songs.Add(SongViewModel);
         }
 
         private bool CanAddNewSong()
         {
-            if (Song == null)
+            if (SongViewModel == null)
                 return false;
 
-            if (Song.Id <= 0)
+            if (SongViewModel.Id <= 0)
                 return false;
 
-            if (String.IsNullOrEmpty(Song.Artist) || String.IsNullOrEmpty(Song.Title))
+            if (String.IsNullOrEmpty(SongViewModel.Artist) || String.IsNullOrEmpty(SongViewModel.Title))
                 return false;
 
             return true;
         }
 
 
-        public ObservableCollection<SongViewModel> Songs { get; set; }
 
-        public SongViewModel Song { get; set; }
-
-        public ICommand AddSong { get; set; }
     }
 }

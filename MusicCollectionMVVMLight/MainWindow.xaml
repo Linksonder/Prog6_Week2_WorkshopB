@@ -20,7 +20,7 @@
 
     <StackPanel>
         <TextBlock Text="Music Collection" FontSize="28" />
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Songs}" Margin="5">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Songs}" Margin="5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Artist" Binding="{Binding Artist}" Width="300" />
@@ -42,13 +42,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Id:" Grid.Column="0" Grid.Row="0" />
-            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="0" Text="{Binding Path=Song.Id, Mode=TwoWay}" />
+            <TextBox MaxLength="5" Grid.Column="1" Grid.Row="0" Text="{Binding Path=SongViewModel.Id, Mode=TwoWay}" />
 
             <TextBlock Text="Artist:" Grid.Column="0" Grid.Row="1" />
-            <TextBox MaxLength="50" Grid.Column="1" Grid.Row="1"  Text="{Binding Path=Song.Artist, Mode=TwoWay}" />
+            <TextBox MaxLength="50" Grid.Column="1" Grid.Row="1"  Text="{Binding Path=SongViewModel.Artist, Mode=TwoWay}" />
 
             <TextBlock Text="Title:" Grid.Column="0" Grid.Row="2" />
-            <TextBox MaxLength="50" Grid.Column="1" Grid.Row="2"  Text="{Binding Path=Song.Title, Mode=TwoWay}" />
+            <TextBox MaxLength="50" Grid.Column="1" Grid.Row="2"  Text="{Binding Path=SongViewModel.Title, Mode=TwoWay}" />
         </Grid>
         <Button Content="Add" Command="{Binding AddSong}" Width="100"  HorizontalAlignment="Left" Margin="5,20,0,0"/>
     </StackPanel>
