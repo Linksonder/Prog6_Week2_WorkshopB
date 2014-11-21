@@ -32,7 +32,13 @@ namespace MusicCollectionMVVMLight.ViewModel
 
         private void AddNewSong()
         {
-            Songs.Add(SongViewModel);
+            var svm = new SongViewModel();
+
+            svm.Artist = SongViewModel.Artist;
+            svm.Title = SongViewModel.Title;
+            svm.Id = SongViewModel.Id;
+
+            Songs.Add(svm);
         }
 
         private bool CanAddNewSong()
